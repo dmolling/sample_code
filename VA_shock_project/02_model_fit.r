@@ -2,9 +2,8 @@
 #
 # Acute vs chronic modelling
 #
-# Date: 2019-09-16
 # Version: 1.3
-# Author: Daniel Molling <daniel.molling@va.gov>
+# Author: Daniel Molling <daniel.molling@gmail.com>
 #
 ################################################################################
 
