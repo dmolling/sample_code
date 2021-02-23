@@ -1,6 +1,6 @@
 ################################################################################
 #
-# Acute vs chronic modelling with Scotland data
+# Acute vs chronic modelling
 #
 # Date: 2019-09-16
 # Version: 1.3
@@ -34,16 +34,16 @@ if(!exists("cleaned_per_patient")) {
 cleaned_per_patient <- readRDS("data/cleaned_per_patient.rds")
 }
 
-# Estimate tuned acute model ------------------------------------------------------
+# Build/define acute model ------------------------------------------------------
 #MARS model allowing interactions of degree 2 with backwards selection
 acute_tuned_spec <- mars(mode = "classification", prod_degree = 2, prune_method = "backward") %>%
   set_engine("earth") #num_terms = 63
 
-# Build tuned chronic model ----------------------------------------------------
+# Build/define chronic model ----------------------------------------------------
 chronic_tuned_spec <- mars(mode = "classification", prod_degree = 2, prune_method = "backward") %>%
   set_engine("earth") 
 
-# Fit models per day -----------------------------------------------------------
+# Fit a MARS model for each day -----------------------------------------------------------
 #cv_fit_metrics2 function:
 #1) makes a random training and testing split of the data stratified by inhosp_mort
 #2) fits the MARS model to the training set
@@ -71,7 +71,7 @@ cv_fit_metrics2 <- function(dat, rec, spec, times = 3){
 #length of stay >= x days for x in 1:28
 #2) applies the cv_fit_metrics2 function to each dataset 100 times (100 different random splits)
 #3) stores results including model predictions and metrics
-# note: this takes ~10hours to run on VINCI servers
+# note: this takes ~10hours to run on VA VINCI servers
 microbenchmark::microbenchmark(
   los_model_fits <- tibble(unit_los = 1:28) %>%
     mutate(day_split = map(unit_los, ~ cleaned_per_patient_flt2 %>%
