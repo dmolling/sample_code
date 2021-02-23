@@ -2,20 +2,22 @@
 #
 # Acute vs chronic modelling with VA data
 #
-# Date: 2019-09-16
-# Author: Daniel Molling <daniel.molling@va.gov>
+# Author: Daniel Molling <daniel.molling@gmail.com>
 #
 ################################################################################
 
 # 01_data_cleaning.r -----------------------------------------------------------
 #
-# The file contains the data cleaning for the paper "xxxxx" [under review]
+# The file contains the code used to clean data and create lists of 
+# features to be used in later modeling for the cited paper below:
+# Viglianti EM, Bagshaw SM, Bellomo R, McPeake J, Molling DJ, Wang XQ, Seelye S, Iwashyna TJ. 
+# "Late Vasopressor Administration in Patients in the ICU: A Retrospective Cohort Study". 
+# Chest. 2020 Aug
 # The raw data file contains daily observations for all VA ICU stays in the year 2017
 # This file creates and cleans a hospitalization level dataset 
 
-#Note: if I wrote this today I'd use purrr functions to do more of the data cleaning.
-#If I remember correctly purrr wasn't installed and I didn't want to wait for IT
-#to add it
+# Note: if I wrote this today I'd use mutate_at() commands to do more of the data cleaning
+# and this file would be significantly shorter. 
 
 # Load required packages
 library(readr)
@@ -28,7 +30,7 @@ library(forcats)
 library(rsample)
 library(recipes)
 
-#load and save raw dataset pulled from the CDW:
+#load and save raw dataset from the CDW (generated using SQL/SAS):
 #df = read_sas("data/icu_shock_20190517.sas7bdat") 
 #saveRDS(df, "data/icu_shock_20190517.rds")
 
@@ -136,7 +138,7 @@ mutate(
   pao2_sc = as.factor(pao2_sc),                     
   ph_sc = as.factor(ph_sc),
   #pc02
-  ## indicators for the 20 most common individual ccs diagnosis codes ##
+  ## Creating indicators for the 20 most common individual ccs diagnosis codes ##
   ccs1  = as.factor(if_else(singlelevel_ccs == 2, 1, 0, missing = 0)),
   ccs2  = as.factor(if_else(singlelevel_ccs == 131, 1, 0, missing = 0)),
   ccs3  = as.factor(if_else(singlelevel_ccs == 101, 1, 0, missing = 0)),
