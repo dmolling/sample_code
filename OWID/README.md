@@ -15,7 +15,7 @@ Instructions:
 
 Putting these scripts in the context of my application to Our World in Data:
 
-I chose to use this task as an excuse to dust off my admittedly rusty python programming skills, and also to learn about how OWID currently structures your codebase and manages data imports. As a result I borrowed the general structure and many of the functions in this directory from the owid/importers/worldbank_wdi repository on github while making some modifications and simplifications. 
+I chose to use this task as an excuse to dust off my admittedly rusty python programming skills, and also to learn about how OWID currently structures their codebase and manages data imports. As a result I borrowed the general structure and many of the functions in this directory from the owid/importers/worldbank_wdi repository on github while making some modifications and simplifications. 
 
 I reverted back to my more comfortable R skills for the baseline visualization of this data series. If I had spent more time on the visualization part of this task, I would have created either an interactive R shiny or python application that allows for filtering of countries or changed the chart code to do a much better job of automatically adjusting the location of labels and axis ticks depending on which countries or years are selected. 
 
