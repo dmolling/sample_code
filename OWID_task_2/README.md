@@ -3,7 +3,7 @@
 
 Instructions:
 
-1. Update covid_calculations/__init__.py with the appropriate DATASET_RETRIEVED_DATE, and other constants as needed. Currently, this requires explicitly specifying the DATASET_RETRIEVED_DATE. 
+1. Update covid_calculations/__init__.py with the appropriate DATASET_RETRIEVED_DATE, and other constants as needed. Currently, this requires explicitly specifying the DATASET_RETRIEVED_DATE but could be updated to automatically set to the current calendar day. 
 
 2. Execute `python -m main` from this folder.
 
