@@ -1,7 +1,7 @@
 
-"""Executes dataset import, cleaning, and writing 
-cleaned datapoints and metadata to disk for the 
-World Bank Global Database of Inflation dataset.
+"""Executes dataset import, generating calculations of whether 
+locations are on track to meet the WHO vaccination goal, 
+and writing output and to disk for the OWID Covid-19 dataset.
 
 Usage:
     python -m main
