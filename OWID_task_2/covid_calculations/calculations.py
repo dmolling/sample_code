@@ -1,7 +1,7 @@
-"""Cleans World Bank inflation metadata and data points in preparation for visualization.
+"""Generates calculations based on OWID Covid-19 data.
 
 Usage:
-    python -m worldbank_inflation.clean
+    python -m covid_calculations.calculations
 """
 
 import os
